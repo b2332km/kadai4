@@ -1,4 +1,4 @@
-#!/bin/bash
+i!/bin/bash
 
 # 結果比較関数
 DIFF_CHECK(){
@@ -6,8 +6,21 @@ DIFF_CHECK(){
     if [ -z "$difference" ]; then
       cat "/tmp/$$-result"
     else
-      ERROR_EXIT "ERROR: $testname"
+      echo "ERROR: $testname" >> /tmp/$$-error.log
+      ERROR_EXIT
     fi
+}
+
+# エラー用関数
+ERROR_EXIT(){
+if [ -f /tmp/$$-error.log ];then
+  cat /tmp/$$-error.log 1>&2
+  rm -f /tmp/$$-*
+  exit 1
+fi
+#  echo $1 1>&2
+#  rm -f /tmp/$$-*
+#  exit 1
 }
 
 # エラー用関数
