@@ -1,0 +1,9 @@
+name: actions-trial
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test start!"
+      - run: ./test_gcd.sh
+      - run: echo "run completed"
