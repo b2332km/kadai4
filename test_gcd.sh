@@ -1,4 +1,4 @@
-i!/bin/bash
+#!/bin/bash
 
 # 結果比較関数
 DIFF_CHECK(){
